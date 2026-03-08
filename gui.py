@@ -18,8 +18,10 @@ while True:
     print(f"value: {value}")
     match event:
         case "Convert":
-            feet = value.get("feet",0)
-            inch = value.get("inches",0)
+            feet = 0 if value.get("feet",'0') == '' else value.get("feet",'0')
+            inch = 0 if value.get("inches",'0') == '' else value.get("inches",'0')
+
+            print(inch, feet)
             meters = float(feet)*0.3048 + float(inch)*0.0254
             window["output"].update(value=meters)
             # if value["feet"] != '':
